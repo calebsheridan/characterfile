@@ -89,7 +89,13 @@ const processDocument = async (filePath) => {
     content = await fs.readFile(filePath, 'utf8');
   }
   
-  return content;
+  return {
+    document: {
+      path: filePath,
+      content: content
+    },
+    chunks: [content]
+  };
 };
 
 // Asynchronous function to recursively find files and process them
